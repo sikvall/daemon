@@ -16,7 +16,7 @@ int main(void)
 {
   pid_t pid = fork();
   if (pid == -1) {
-    // For has failed and we need to exit
+    // Fork has failed and we need to exit
     fprintf(stderr, "ERROR: Unable to fork to child process, exiting.\n");
     exit(20);
   }
@@ -33,7 +33,7 @@ int main(void)
   syslog(LOG_INFO, "Fork successful");
   
   // Attach signal handler to sighup
-  signal(SIGHUP, signal_handler);
+  signal(SIGHUP,  signal_handler);
   signal(SIGCHLD, signal_handler);
   signal(SIGTERM, signal_handler);
   signal(SIGABRT, signal_handler);
@@ -45,4 +45,4 @@ int main(void)
 
   return (0);
 }
- 
+
